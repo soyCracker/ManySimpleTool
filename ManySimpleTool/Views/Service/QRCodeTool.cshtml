@@ -1,0 +1,85 @@
+﻿
+<main id="main">
+
+    <!-- ======= qrcode-tool Section ======= -->
+    <section id="qrcode-tool" class="padd-section">
+        <div class="container" data-aos="fade-up">
+            <div class="row justify-content-center">
+
+                <div class="col-md-7 col-lg-5">
+                    <div class="qrcode-content" data-aos="fade-left" data-aos-delay="100">
+
+                        <input class="qrcode-input-text" v-on:change="on_text_change" ref="text" name="input_text" type="text" placeholder="請輸入" maxlength="256" required>
+
+                        <p>輸入字串轉換QR code</p>
+
+                        <button v-on:click="create_button" type="button" class="btn btn-success">產生</button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-5 col-lg-3">
+                    <img :src="qr_url" alt="About" data-aos="zoom-in" data-aos-delay="100">
+                </div>
+
+
+            </div>
+        </div>
+    </section><!-- End About Us Section -->
+
+
+
+</main><!-- End #main -->
+
+<script>
+    new Vue({
+        el: '#qrcode-tool',
+        data:
+        {
+            input_text: '',
+            qr_url:''
+        },
+        methods:
+        {
+            on_text_change: function ()
+            {
+                var self = this;
+                console.log('on_text_change')
+                self.input_text = self.$refs.text.value;
+            },
+
+            create_button: function ()
+            {
+                var self = this;
+                console.log('click');
+
+                
+                axios.post("/api/QRCode", { InputText: self.input_text },
+                    { responseType: 'arraybuffer' })
+                    .then(function(result){
+                        console.log('Yes');
+                        //console.log(result.data.value + ' ' + result.data.inputText);
+                        //self.$refs.qr - img.src = result.data.
+
+                        let blob = new Blob(
+                            [result.data],
+                            { type: result.headers['content-type'] }
+                        );
+                        let image = URL.createObjectURL(blob);
+                        self.qr_url = image;
+                    })
+                    .catch(function(error){
+                        console.log('NO');
+                        console.log(error);
+                    });
+            }
+        },
+        mounted: function () {
+            var self = this;
+            self.qr_url = "../../assets/img/icon.jpg";
+        }
+    })
+
+</script>
