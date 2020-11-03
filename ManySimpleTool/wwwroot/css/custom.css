@@ -182,3 +182,38 @@
     height: 400px;
     overflow: hidden;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.index-section {
+    width: 100%;
+    height: 100vh;
+    background-color: #f2f2f2;
+    color: #000000;
+    font-size: 200px;
+    line-height: 100vh;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.topic1 {
+    background-image: url("https://ithelp.ithome.com.tw/upload/images/20201006/20112550tt7P2ZOvp1.jpg");
+    color: #fff;
+}
+
+.topic3 {
+    background-image: url("https://ithelp.ithome.com.tw/upload/images/20201006/20112550RAeWACWPDm.jpg");
+    color: #fff;
+}
+
+.topic5 {
+    background-image: url("https://ithelp.ithome.com.tw/upload/images/20201006/20112550X424Ljp30m.jpg");
+    color: #fff;
+}
