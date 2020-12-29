@@ -9,7 +9,7 @@ using ZXing;
 using ZXing.Common;
 using ZXing.QrCode;
 
-namespace ManySimpleTool.Service.QRCode
+namespace ManySimpleTool.Service
 {
     public class QRCodeService
     {
@@ -30,7 +30,7 @@ namespace ManySimpleTool.Service.QRCode
             return BitmapToArray(bitmap);
         }
 
-        private static byte[] BitmapToArray(Bitmap bmp)
+        private byte[] BitmapToArray(Bitmap bmp)
         {
             byte[] byteArray = null;
             using (MemoryStream stream = new MemoryStream())

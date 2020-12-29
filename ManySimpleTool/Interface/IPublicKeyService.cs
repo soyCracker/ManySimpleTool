@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ManySimpleTool.Models.QRCode
+namespace ManySimpleTool.Interface
 {
-    public class QRCodeModel
+    public interface IPublicKeyService
     {
-        public string InputText { get; set; }
+        //string GetKey();
     }
 }
